@@ -55,7 +55,7 @@ const links = [
         </div>
       </div>
     </header>
-    <main class="flex justify-center text-white">
+    <main class="flex justify-center">
       <slot />
     </main>
   </div>
