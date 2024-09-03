@@ -25,8 +25,8 @@ function splitAddress(
   return `${firstPart}...${lastPart}`;
 }
 
-const safeLink = `https://app.safe.global/home?safe=sep:${store.safeAddress}`;
-const jiffscanLink = `https://jiffyscan.xyz/userOpHash/${store.userOp}?network=${CHAIN_NAME}`;
+const safeLink = computed(() => `https://app.safe.global/home?safe=sep:${store.safeAddress}`);
+const jiffscanLink = computed(() => `https://jiffyscan.xyz/userOpHash/${store.userOp}?network=${CHAIN_NAME}`)
 </script>
 
 <template>
