@@ -11,6 +11,8 @@ async function handleMintNFT() {
   store.setIsLoading(false);
   store.setIsSafeDeployed(true);
   store.setUserOp(userOp);
+  store.setJiffyLink(`https://jiffyscan.xyz/userOpHash/${userOp}?network=${CHAIN_NAME}`);
+  store.setSafeLink(`https://app.safe.global/home?safe=sep:${store.safeAddress}`);
 }
 
 const DEFAULT_CHAR_DISPLAYED = 6;
@@ -25,8 +27,6 @@ function splitAddress(
   return `${firstPart}...${lastPart}`;
 }
 
-const safeLink = `https://app.safe.global/home?safe=sep:${store.safeAddress}`;
-const jiffscanLink = `https://jiffyscan.xyz/userOpHash/${store.userOp}?network=${CHAIN_NAME}`;
 </script>
 
 <template>
@@ -46,7 +46,7 @@ const jiffscanLink = `https://jiffyscan.xyz/userOpHash/${store.userOp}?network=$
         color="white"
         v-if="store.safeAddress"
         class="my-8"
-        :to="safeLink"
+        :to="store.safeLink"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -74,7 +74,7 @@ const jiffscanLink = `https://jiffyscan.xyz/userOpHash/${store.userOp}?network=$
         color="white"
         v-if="store.userOp"
         class="my-8"
-        :to="jiffscanLink"
+        :to="store.jiffyLink"
         target="_blank"
         rel="noopener noreferrer"
         >{{ store.userOp }}
